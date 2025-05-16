@@ -188,6 +188,7 @@ root.iconbitmap("Timer.ico")
 root.geometry("450x280")
 root.configure(fg_color = BACK_COLOR)
 image=  ctk.CTkImage(Image.open("refresh.png"), size=(22,22))
+photo= ctk.CTkImage(Image.open("settings.png"),size=(22,22))
 # Top controls
 top_frame = ctk.CTkFrame(root, fg_color=LABEL_COLOR)
 top_frame.pack(pady=10, fill="x", padx=10)
@@ -195,7 +196,7 @@ top_frame.pack(pady=10, fill="x", padx=10)
 loop_label = ctk.CTkLabel(top_frame, text="0/4", font=("Segoe UI", 18))
 loop_label.pack(side="left", padx=10)
 
-ctk.CTkButton(top_frame, text="⚙", width=35, command=open_settings, fg_color=PRIMARY, hover_color= HOVER, border_color=BORDER).pack(side="right",padx=0)
+ctk.CTkButton(top_frame, text="",image=photo, width=35, command=open_settings, fg_color=PRIMARY, hover_color= HOVER, border_color=BORDER).pack(side="right",padx=0)
 
 # Mode Indicator Label
 mode_label = ctk.CTkLabel(root, text="", font=("Segoe UI", 16))
