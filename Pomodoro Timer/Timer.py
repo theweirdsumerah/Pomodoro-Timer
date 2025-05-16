@@ -2,6 +2,7 @@ import customtkinter as ctk
 import tkinter as tk
 import pygame
 from tkinter import ttk
+from PIL import Image
 
 #using pygame mixer for sound
 pygame.mixer.init()
@@ -118,18 +119,23 @@ def skip_timer():
     handle_completion()
 
 def open_settings(): #opens settings option
-    def save_settings(): #saves the times for different in the settings 
+    def save_settings(event=None): #saves the times for different in the settings 
         global WORK_TIME, SHORT_BREAK_TIME, LONG_BREAK_TIME
-        WORK_TIME = int(work_time_entry.get())
-        SHORT_BREAK_TIME = int(short_break_time_entry.get())
-        LONG_BREAK_TIME = int(long_break_time_entry.get())
-        update_timer_display()
-        settings_win.destroy()
+        try:
+            WORK_TIME = int(work_time_entry.get())
+            SHORT_BREAK_TIME = int(short_break_time_entry.get())
+            LONG_BREAK_TIME = int(long_break_time_entry.get())
+            update_timer_display()
+            settings_win.destroy()
+        except ValueError:
+            print("Please enter valid integer values")
     #the settungs page creation using ctk hehe
     settings_win = ctk.CTkToplevel(root)
     settings_win.title("Settings")
     settings_win.geometry("250x300")
     settings_win.configure(fg_color=BACK_COLOR)
+
+    settings_win.bind("<Return>",save_settings)
 
     ctk.CTkLabel(settings_win, text="Pomodoro:").pack(pady=(10, 5))
     work_time_entry = ctk.CTkEntry(settings_win, fg_color=LABEL_COLOR,border_color=BORDER,width=100)
@@ -181,7 +187,7 @@ root.title("Timer")
 root.iconbitmap("Timer.ico")
 root.geometry("450x280")
 root.configure(fg_color = BACK_COLOR)
-
+image=  ctk.CTkImage(Image.open("refresh.png"), size=(22,22))
 # Top controls
 top_frame = ctk.CTkFrame(root, fg_color=LABEL_COLOR)
 top_frame.pack(pady=10, fill="x", padx=10)
@@ -209,7 +215,7 @@ start_btn = ctk.CTkButton(button_frame, text="  Start", command=start_timer, wid
 start_btn.pack(side="left", padx=3)
 
 #skip button
-skip_btn = ctk.CTkButton(button_frame, text="🔄", command=skip_timer, width=40, fg_color=PRIMARY, hover_color=HOVER, border_color=BORDER, font=("Segoe UI",20))
+skip_btn = ctk.CTkButton(button_frame,text="",image=image, command=skip_timer, width=40, fg_color=PRIMARY, hover_color=HOVER, border_color=BORDER, font=("Segoe UI",20))
 skip_btn.pack(side="left" , padx=2)
 
 # Mode Buttons
