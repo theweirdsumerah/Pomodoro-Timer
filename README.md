@@ -6,3 +6,8 @@ Pomodoro Timer is a Tkinter-created graphical user interface program.  It's quit
  You may change the timer to various intervals using the context menu:
 
  Begin with a 25-minute Pomodoro, followed by a 5-minute brief break and a 10-minute longer rest. Additionally, you may pause to see how much time is remaining.
+
+ 
+![Timer](https://github.com/user-attachments/assets/c3432493-a971-4d17-8a49-1f09685a7eaa)
+
+
