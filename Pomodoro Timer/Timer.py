@@ -119,7 +119,7 @@ def skip_timer():
     handle_completion()
 
 def open_settings(): #opens settings option
-    def save_settings(event=None): #saves the times for different in the settings 
+    def save_settings(event=None): #saves the times for different modes in the settings 
         global WORK_TIME, SHORT_BREAK_TIME, LONG_BREAK_TIME
         try:
             WORK_TIME = int(work_time_entry.get())
@@ -135,7 +135,7 @@ def open_settings(): #opens settings option
     settings_win.geometry("250x300")
     settings_win.configure(fg_color=BACK_COLOR)
 
-    settings_win.bind("<Return>",save_settings)
+    settings_win.bind("<Return>",save_settings) #saves time by pressing enter key.
 
     ctk.CTkLabel(settings_win, text="Pomodoro:").pack(pady=(10, 5))
     work_time_entry = ctk.CTkEntry(settings_win, fg_color=LABEL_COLOR,border_color=BORDER,width=100)
