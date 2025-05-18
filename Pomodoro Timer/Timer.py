@@ -135,7 +135,7 @@ def open_settings(): #opens settings option
     settings_win.geometry("250x300")
     settings_win.configure(fg_color=BACK_COLOR)
 
-    settings_win.bind("<Return>",save_settings) #saves time by pressing enter key.
+    settings_win.bind("<Return>",save_settings)#saves time by pressing enter key.
 
     ctk.CTkLabel(settings_win, text="Pomodoro:").pack(pady=(10, 5))
     work_time_entry = ctk.CTkEntry(settings_win, fg_color=LABEL_COLOR,border_color=BORDER,width=100)
@@ -188,7 +188,7 @@ root.iconbitmap("Timer.ico")
 root.geometry("450x280")
 root.configure(fg_color = BACK_COLOR)
 image=  ctk.CTkImage(Image.open("refresh.png"), size=(22,22))
-photo= ctk.CTkImage(Image.open("settings.png"),size=(22,22))
+photo= ctk.CTkImage(Image.open("settings.png"),size=(23,23))
 # Top controls
 top_frame = ctk.CTkFrame(root, fg_color=LABEL_COLOR)
 top_frame.pack(pady=10, fill="x", padx=10)
@@ -196,6 +196,7 @@ top_frame.pack(pady=10, fill="x", padx=10)
 loop_label = ctk.CTkLabel(top_frame, text="0/4", font=("Segoe UI", 18))
 loop_label.pack(side="left", padx=10)
 
+#settings button
 ctk.CTkButton(top_frame, text="",image=photo, width=35, command=open_settings, fg_color=PRIMARY, hover_color= HOVER, border_color=BORDER).pack(side="right",padx=0)
 
 # Mode Indicator Label
@@ -212,24 +213,24 @@ button_frame = ctk.CTkFrame(root, fg_color="transparent")
 button_frame.pack(pady=10)
 
 #start and pause button
-start_btn = ctk.CTkButton(button_frame, text="  Start", command=start_timer, width=140, fg_color=PRIMARY, hover_color=HOVER, border_color=BORDER)
+start_btn = ctk.CTkButton(button_frame, text="  Start", command=start_timer, width=140, fg_color=PRIMARY, hover_color=HOVER, border_color=BORDER, border_width=1)
 start_btn.pack(side="left", padx=3)
 
 #skip button
-skip_btn = ctk.CTkButton(button_frame,text="",image=image, command=skip_timer, width=40, fg_color=PRIMARY, hover_color=HOVER, border_color=BORDER, font=("Segoe UI",20))
+skip_btn = ctk.CTkButton(button_frame,text="",image=image, command=skip_timer, width=40, fg_color=PRIMARY, hover_color=HOVER, border_color=BORDER,border_width=1, font=("Segoe UI",20))
 skip_btn.pack(side="left" , padx=2)
 
 # Mode Buttons
 mode_frame = ctk.CTkFrame(root, fg_color="transparent")
 mode_frame.pack(pady=10)
 
-pomodoro_btn = ctk.CTkButton(mode_frame, text="Pomodoro", command=lambda: switch_mode("Pomodoro"), width=90, fg_color="transparent", hover_color=HOVER, border_color=BORDER)
+pomodoro_btn = ctk.CTkButton(mode_frame, text="Pomodoro", command=lambda: switch_mode("Pomodoro"), width=90, fg_color="transparent", hover_color=HOVER, border_color=BORDER,border_width=1)
 pomodoro_btn.grid(row=0, column=0, padx=5)
 
-short_break_btn = ctk.CTkButton(mode_frame, text="Short Break", command=lambda: switch_mode("Short Break"), width=90, fg_color="transparent", hover_color=HOVER, border_color=BORDER)
+short_break_btn = ctk.CTkButton(mode_frame, text="Short Break", command=lambda: switch_mode("Short Break"), width=90, fg_color="transparent", hover_color=HOVER, border_color=BORDER,border_width=1)
 short_break_btn.grid(row=0, column=1, padx=5)
 
-long_break_btn = ctk.CTkButton(mode_frame, text="Long Break", command=lambda: switch_mode("Long Break"), width=90, hover_color=HOVER, border_color=BORDER)
+long_break_btn = ctk.CTkButton(mode_frame, text="Long Break", command=lambda: switch_mode("Long Break"), width=90, hover_color=HOVER, border_color=BORDER,border_width=1)
 long_break_btn.grid(row=0, column=2, padx=5)
 
 highlight_mode()
