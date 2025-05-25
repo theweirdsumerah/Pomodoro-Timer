@@ -1,5 +1,5 @@
 import customtkinter as ctk
-import tkinter as tk
+# import tkinter as tk
 import pygame
 from tkinter import ttk
 from PIL import Image
@@ -18,6 +18,7 @@ time_left = WORK_TIME * 60
 is_running = False
 timer_id = None
 pomodoro_count = 0
+settings_win=None
 
 # Purple theme colors
 PRIMARY = "#5b2872"
@@ -119,6 +120,11 @@ def skip_timer():
     handle_completion()
 
 def open_settings(): #opens settings option
+    global settings_win
+    if settings_win is not None and settings_win.winfo_exists():
+        settings_win.destroy()
+        settings_win=None
+        return
     def save_settings(event=None): #saves the times for different modes in the settings 
         global WORK_TIME, SHORT_BREAK_TIME, LONG_BREAK_TIME
         try:
